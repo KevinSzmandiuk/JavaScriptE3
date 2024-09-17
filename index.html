@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EJS3 Pizzas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.js">
+    <link rel="stylesheet" href="img/">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="/img/pizza.png" alt="imagen de pizza" class="pizza">
+    <div class="container">
+        <input type="number" id="pizzaId" placeholder="Ingrese ID de la pizza deseada" min="1">
+        <button class="button" id="BotonBusqueda">Buscar Pizza</button>
+        <div id="resultContainer"></div>
+    </div>
+    <script src="index.js"></script>
+    <script>
+        function MostrarError(message){
+            const container=document.getElementById('resultContainer');
+            container.innerHTML=`<p class="error">${message}</p>`;
+        }
+        function FotoPizza(pizza){
+            const container=document.getElementById('resultContainer');
+            container.innerHTML=`
+                <div class="card">
+                    <img src="${pizza.imagen}" alt="${pizza.nombre}">
+                    <h2>${pizza.nombre}</h2>
+                    <p>Precio: $${pizza.precio}</p>
+                    <p>Ingredientes: ${pizza.ingredientes.join(',')}</p>
+                    </div>
+                `;
+        }
+        document.getElementById('BotonBusqueda').addEventListener('click',()=>{
+            const input=document.getElementById('pizzaId');
+            const id=parseInt(input.value,10);
+            if (isNaN(id)||id<=0){
+                MostrarError('Ingrese un numero válido.');
+                return;
+            }
+            const pizza=pizzas.find(pizza=>pizza.id===id);
+            if (pizza){
+                FotoPizza(pizza);
+                localStorage.setItem('UltimaPizza', JSON.stringify(pizza));
+            } else{
+                MostrarError('No se encontró ninguna pizza con este ID.');
+                localStorage.removeItem('UltimaPizza');
+            }
+        });
+        window.addEventListener('load',()=>{
+            const UltimaPizza= localStorage.getItem('UltimaPizza');
+            if (UltimaPizza){
+                FotoPizza(JSON.parse(UltimaPizza));
+            }
+        });
+    </script>
+</body>
+</html>

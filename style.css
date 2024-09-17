@@ -1,0 +1,77 @@
+body {
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: linear-gradient(to left, #55fe4f 5%, #00fe878f 100%);
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+}
+
+input[type="number"] {
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #4acc0e;
+    border-radius: 4px;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 20px;
+    border: 1px solid #646464;
+    border-radius: 4px;
+    background-color: #8fd66e;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #9ac088;
+}
+
+.pizza {
+    width: 50%;
+    max-width: 250px;
+    height: auto;
+}
+
+.card {
+    border: 1px solid #646464;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(219, 18, 18, 0.1);
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #aecaa1;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #000000;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
